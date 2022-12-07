@@ -15,6 +15,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .open--page, .quiz{
@@ -45,14 +46,21 @@ body {
   border-style: none;
   font-size: 18px;
   cursor: pointer;
+  outline:none;
 }
 
 .open--page--btn:active, .quiz--btn:active{
   box-shadow: inset 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
-.open--page--btn:focus{
-  outline: auto;
+.open--page--btn:hover, .quiz--btn:hover{
+  color: rgb(90, 90, 150);
+  background-color: rgba(90, 90, 150, 0.3);
+}
+
+.open--page--btn:focus, .quiz--btn:focus{
+  color: rgb(90, 90, 150);
+  background-color: rgba(90, 90, 150, 0.3);
 }
 
 .question{
@@ -81,14 +89,20 @@ body {
 }
 
 .footer{
+    flex-direction: row;
     height:100px;
 }
 
-.start--btn{
-  margin: 30px 30px;
+.start--btn, .end--btn{
+  margin: 0px 10px;
+  margin-left: 20px;
 }
 
-.score{
+.score, .load--message{
   color: rgb(90, 90, 150);
   font-weight: 600;
+}
+
+.load--message{
+  margin-top: 20px;
 }

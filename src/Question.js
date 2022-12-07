@@ -21,9 +21,7 @@ function Question(props) {
                     return {...item, selected: false}
                 })
             })
-        }
-
-        if(props.checked){
+        }else {
             for(let i = 0; i < 4; i++){
                 if(ansOptions[i].selected && ansOptions[i].isCorrect){
                     props.checkAnswer()

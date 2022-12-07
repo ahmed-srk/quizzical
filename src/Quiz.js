@@ -1,17 +1,15 @@
 import React from "react";
 import Question from "./Question";
-import {nanoid} from "nanoid";
-import Data from "./data"
+ import {nanoid} from "nanoid";
 import Confetti from 'react-confetti'
 
-function Quiz() {
-    //State to receive data from API
+function Quiz(props) {
     // eslint-disable-next-line
     const [qnsData, setQnsData] = React.useState(
-        Data.results.map((item) => {
+        props.data.map((item) => {
             return {id: nanoid(), ...item}
         })
-    ) 
+    )
 
     //State to check if the answers have already been checked or not
     const [checked, setChecked] = React.useState(false)
@@ -21,6 +19,7 @@ function Quiz() {
         qnsData.sort(() => 0.5 - Math.random()).slice(0, 5)
     )
 
+    //State to count total number of correct answers
     const [count, setCount] = React.useState(0)
 
     function checkAnswer(){
@@ -44,8 +43,6 @@ function Quiz() {
       setCount(0)
     }
 
-
-
     return (
       <div className="quiz">
           {qns}
@@ -56,6 +53,7 @@ function Quiz() {
               <div className="footer">
                   <p className="score">You scored {count}/5 Correct {count > 1 ? `Answers` : `Answer`}</p>
                   <button className="quiz--btn start--btn" onClick={startGame}>Play Again</button>
+                  <button className="quiz--btn end--btn" onClick={props.onClick}>End Game</button>
               </div>  
           }
 
